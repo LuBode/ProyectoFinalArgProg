@@ -11,6 +11,7 @@ import { AcerdeComponent } from './components/acerde/acerde.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
+import { ProyectosComponent } from './components/proyectos/proyectos.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HabilidadesComponent } from './components/habilidades/habilidades.compo
     BannerComponent,
     AcerdeComponent,
     EducacionComponent,
-    HabilidadesComponent
+    HabilidadesComponent,
+    ProyectosComponent
   ],
   imports: [
     BrowserModule,
