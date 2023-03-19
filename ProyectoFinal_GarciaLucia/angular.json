@@ -26,10 +26,10 @@
             ],
             "styles": [
               "src/styles.css",
-              "ProyectoFinal_GarciaLucia/node_modules/bootstrap/dist/css/bootstrap.css"
+              "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": [
-              "ProyectoFinal_GarciaLucia/node_modules/bootstrap/dist/js/bootstrap.js"
+              "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {
