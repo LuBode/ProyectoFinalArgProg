@@ -37,9 +37,9 @@ div{
 @media (min-width: 880px){
     #fotoperfil{
         position: absolute;
-        width: 22%;
-        left: 1%;
-        top: 520px;
+        width: 20%;
+        left: 4%;
+        top: 800px;
     }
 }
 
