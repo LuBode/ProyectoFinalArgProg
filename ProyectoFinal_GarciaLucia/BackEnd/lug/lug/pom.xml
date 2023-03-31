@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.4</version>
+		<version>3.0.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.portfolio</groupId>
-	<artifactId>lagb</artifactId>
+	<groupId>com.proyectofinal</groupId>
+	<artifactId>lug</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>lagb</name>
-	<description>Proyecto final del Argentina Programa - Lucia A Garcia Bode</description>
+	<name>lug</name>
+	<description>Proyecto final de LAGB.</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -51,18 +51,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-               
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-security</artifactId>
-                </dependency>
-                
-                <dependency>
-                    <groupId>io.jsonwebtoken</groupId>
-                    <artifactId>jjwt</artifactId>
-                    <version>0.9.1</version>
-                </dependency>
-
 	</dependencies>
 
 	<build>
