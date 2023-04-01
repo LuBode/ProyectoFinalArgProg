@@ -1,61 +1,63 @@
 package com.portfolio.lagb.Security;
 
-import com.portfolio.lagb.Security.Service.UsuarioDetailsImp;
 import com.portfolio.lagb.Security.jwt.JwtEntryPoint;
 import com.portfolio.lagb.Security.jwt.JwtTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
-class WebSecurityConfigurerAdapter {
 
-    @Autowired
-    UsuarioDetailsImp UserDetailsService;
+public class MainSecurity {
+
 
     @Autowired
     JwtEntryPoint jwtEntryPoint;
 
-    protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable().authorizeHttpRequests()
-                .anyRequest().authenticated().and()
-                .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
-                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    @Bean
+    public JwtTokenFilter jwtTokenFilter() {
+        return new JwtTokenFilter();
     }
 
-    public AuthenticationManager authenticationManager() {
-        return authenticationManager();
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
-    public AuthenticationManager authenticationManagerBean() {
-        return authenticationManagerBean();
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(jwtEntryPoint).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .authorizeHttpRequests()
+                .anyRequest().authenticated();
+
+        http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+
+    private static class UserDetailsImpl {
+
+        public UserDetailsImpl() {
+        }
     }
 }
-
-    public class MainSecurity extends WebSecurityConfigurerAdapter {
-
-        @Bean
-        public JwtTokenFilter jwtTokenFilter() {
-            return new JwtTokenFilter();
-        }
-
-        @Bean
-        public PasswordEncoder passwordEncoder() {
-            return new BCryptPasswordEncoder();
-        }
-
-        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.userDetailsService(UserDetailsService).passwordEncoder(passwordEncoder());
-        }
-    }
