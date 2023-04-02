@@ -1,7 +1,11 @@
-package com.portfolio.lagb.Controller;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.proyectofinal.lab.Controller;
 
-import com.portfolio.lagb.Entity.Persona;
-import com.portfolio.lagb.Interface.IPersonaService;
+import com.proyectofinal.lab.Entity.Persona;
+import com.proyectofinal.lab.Interface.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,46 +21,44 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class PersonaController {
-    @Autowired IPersonaService ipersonaService;
-    
+
+    @Autowired
+    IPersonaService ipersonaService;
+
     @GetMapping("/personas/traer")
-    public List<Persona> getPersona(){
+    public List<Persona> getPersona() {
         return ipersonaService.getPersona();
     }
-    
+
     @PostMapping("/personas/crear")
-    public String createPersona(@RequestBody Persona persona){
+    public String createPersona(@RequestBody Persona persona) {
         ipersonaService.savePersona(persona);
         return "El usuario se creo correctamente";
     }
-    
+
     @DeleteMapping("/personas/borrar/{id}")
-    public String deletePersona(@PathVariable Long id){
+    public String deletePersona(@PathVariable Long id) {
         ipersonaService.deletePersona(id);
         return "El usuario se elimino correctamente";
     }
-    
+
     @PutMapping("/personas/editar/{id}")
     public Persona editPersona(@PathVariable Long id,
-                              @RequestParam("nombre") String nuevonombre,
-                              @RequestParam("apellido") String nuevoapellido,
-                              @RequestParam("img") String nuevaimg){
+            @RequestParam("nombre") String nuevonombre,
+            @RequestParam("apellido") String nuevoapellido,
+            @RequestParam("img") String nuevaimg) {
         Persona persona = ipersonaService.findPersona(id);
         persona.setNombre(nuevonombre);
         persona.setApellido(nuevoapellido);
         persona.setImg(nuevaimg);
-        
+
         ipersonaService.savePersona(persona);
         return persona;
     }
-    
-    @GetMapping("/personas/traer/perfil")
-    public Persona findPersona(){
-        return ipersonaService.findPersona((long)1);
-    }
-        
-        
-    
-}
-    
 
+    @GetMapping("/personas/traer/perfil")
+    public Persona findPersona() {
+        return ipersonaService.findPersona((long) 1);
+    }
+
+}
