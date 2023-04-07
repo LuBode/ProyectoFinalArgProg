@@ -8,8 +8,9 @@
                     <img src="../../../assets/instagram.png" id="logoIG"></a>
                 <a href="https://github.com/LuBode">
                     <img src="../../../assets/github.png" id="logoGH"></a>
-                <button type="button" class="btn btn-outline-ligther" (click)="login()">LOGIN</button>
-        </div>
+                <button type="button" class="btn btn-outline-ligther" (click)="login()" *ngIf="isLogged">LOGIN</button>
+                <button type="button" class="btn btn-outline-ligther" (click)="onLogOut()" *ngIf="isLogged">LOGOUT</button>
+            </div> 
     </div>
 </div>
 

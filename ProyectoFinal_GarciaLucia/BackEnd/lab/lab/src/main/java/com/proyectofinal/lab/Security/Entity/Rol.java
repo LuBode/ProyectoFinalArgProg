@@ -6,7 +6,6 @@ package com.proyectofinal.lab.Security.Entity;
 
 import com.proyectofinal.lab.Security.Enums.RolNombre;
 import javax.persistence.Entity;
-//import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
