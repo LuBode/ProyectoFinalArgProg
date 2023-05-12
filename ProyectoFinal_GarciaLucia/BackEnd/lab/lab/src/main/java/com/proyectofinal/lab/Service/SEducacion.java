@@ -4,8 +4,8 @@
  */
 package com.proyectofinal.lab.Service;
 
-import com.proyectofinal.lab.Entity.Experiencia;
-import com.proyectofinal.lab.Repository.RExperiencia;
+import com.proyectofinal.lab.Entity.Educacion;
+import com.proyectofinal.lab.Repository.REducacion;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -14,35 +14,35 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public class SExperiencia {
+public class SEducacion {
     @Autowired
-    RExperiencia rExperiencia;
+    REducacion rEducacion;
     
-    public List<Experiencia> list(){
-        return rExperiencia.findAll();
+    public List<Educacion> list(){
+        return rEducacion.findAll();
     }
     
-    public Optional<Experiencia> getOne(int id){
-        return rExperiencia.findById(id);
+    public Optional<Educacion> getOne(int id){
+        return rEducacion.findById(id);
     }
     
-    public Optional<Experiencia> getByNombreE(String nombreE){
-        return rExperiencia.findByNombreE(nombreE);
+    public Optional<Educacion> getByNombreE(String nombreE){
+        return rEducacion.findByNombreE(nombreE);
     }
     
-    public void save(Experiencia expe){
-        rExperiencia.save(expe);
+    public void save(Educacion educacion){
+        rEducacion.save(educacion);
     }
     
     public void delete(int id){
-        rExperiencia.deleteById(id);
+        rEducacion.deleteById(id);
     }
     
     public boolean existsById(int id){
-        return rExperiencia.existsById(id);
+        return rEducacion.existsById(id);
     }
     
     public boolean existsByNombreE(String nombreE){
-        return rExperiencia.existByNombreE(nombreE);
+        return rEducacion.existByNombreE(nombreE);
     }
 }

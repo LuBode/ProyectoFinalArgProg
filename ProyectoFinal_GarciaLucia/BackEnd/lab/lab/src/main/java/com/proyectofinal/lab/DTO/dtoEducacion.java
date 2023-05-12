@@ -6,16 +6,16 @@ package com.proyectofinal.lab.DTO;
 
 import javax.validation.constraints.NotBlank;
 
-public class dtoExperiencia {
+public class dtoEducacion {
     @NotBlank
     private String nombreE;
     @NotBlank
     private String dscripcionE;
 
-    public dtoExperiencia() {
+    public dtoEducacion() {
     }
 
-    public dtoExperiencia(String nombreE, String dscripcionE) {
+    public dtoEducacion(String nombreE, String dscripcionE) {
         this.nombreE = nombreE;
         this.dscripcionE = dscripcionE;
     }

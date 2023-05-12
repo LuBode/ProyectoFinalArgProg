@@ -1,56 +1,33 @@
 <div class="row">
     <h3>Educación</h3>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
-        <ul>
-            <li>
-                <img src="../../../assets/logofiuner.png" width="90">
-                <h6> Procesamiento y Explotación de Datos</h6> - <i>(2021 - 2023)</i>
-            </li>
-                <p>Tecnicatura Universitaria en Producción y Explotación de datos - 
-                    Facultad de Ingeniería, Universidad Nacional de Entre Ríos.
-                    Conocimientos para el uso y gestión de fuentes de datos, publicaciones 
-                    regulares, bases de datos, repositorios y reservorios de diversos tipos 
-                    de datos. Habilidades en matemática, estadística, herramientas informáticas 
-                    y algoritmos computacionales. Conocimientos informáticos destinados al procesamiento 
-                    de bases de datos de diversa naturaleza y formatos, con competencias analíticas 
-                    y metodológicas para describir, ordenar, analizar y explotar datos específicos 
-                    o cruces entre fuentes y formatos heterogéneos.
-                </p>
-            <li>
-                <img src="../../../assets/logofcyt.png" width="90">
-                <h6> Lic. en Criminalística</h6> - (2020 - 2024)
-            </li>
-                <p>Licenciatura en Criminalística - Facultad de Ciencia y Tecnología, Universidad Autónoma de Entre Ríos
-                    Realizar Pericias Balísticas, Papiloscópicas y Documentológicas como Perito Oficial, Perito de Parte y 
-                    Perito en Instituciones de Seguridad y Policía. Asesorar a profesionales, empresas de seguros y/ o jueces 
-                    sobre situaciones y hechos delictivos y acerca de métodos y técnicas de identificación de las personas 
-                    involucradas y de los elementos implicados en el delito.
-                    Diseñar e implementar investigaciones criminalísticas en materia de situaciones y hechos delictivos, 
-                    mediante métodos y técnicas de identificación de las personas involucradas y de los elementos implicados.
-                    Asesorar a organismos oficiales encargados de las acciones públicas sobre medidas a 
-                    tomar en cuanto a protección del lugar del hecho. Programar, ejecutar y supervisar planes de formación pericial, 
-                    determinando el perfil de los recursos humanos necesarios.
-                    Participar en el diseño de políticas criminalísticas en organizaciones públicas y privadas.
-                    Realizar estudios e investigaciones básicas y aplicadas en el campo de la Criminalística y 
-                    en sus disciplinas de Balística, Papiloscopía y Documentología.
-                    Colaborar en estudios inherentes a la rehabilitación de individuos con conductasreprobables o punibles.
-                </p>
-            <li>
-                <img src="../../../assets/logofiuner.png" width="90">
-                <h6> Bioingenieria</h6> - (2015 - actualidad)
-            </li>
-                <p>Bioingeniería - Facultad de Ingeniería, Universidad Nacional de Entre Ríos.
-                    Sólidos conocimientos en ciencias básicas, tecnologías básicas y aplicadas; así también de la estructura 
-                    y funcionamiento de los sistemas biológicos para el desarrollo de nuevas tecnologías 
-                    en el área de competencia. Modelar, interpretar y explicar mecanismos biológicos. 
-                    Aplicar estos conocimientos en el diseño, desarrollo y utilización de productos médicos aplicados 
-                    a la salud humana y animal.
-                    Evaluar las condiciones de instalación, seguridad, funcionamiento y utilización de instrumentos
-                     y materiales de tecnología médica, hospitalaria y biológica en general;
-                    Formación en gestión y organización que le permite participar en el sistema de producción 
-                    de bienes y servicios de su país.</p>
-            
-        </ul>
+    <div class="col-lg-2">
+        <button type="button" class="btn btn-dark" routerLink="/nuevaedu" *ngIf="isLogged">
+            Nueva Educacion
+        </button>
     </div>
+
+    <div class="col-lg-1"></div>
+    <div class="col-lg-11">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let Educacion of educacion">
+                    <td>
+                        <h3>{{Educacion.nombreE}}</h3>
+                    </td>
+                    <td>{{Educacion.descripcionE}}</td>
+                    <td *ngIf="isLogged">
+                        <button type="button" class="btn btn-ligth" routerLink="/editedu/{{Educacion.id}}">
+                            <i class="bi bi-pencil-fill"> EDITAR </i></button>
+                    </td>
+                    <td *ngIf="isLogged">
+                        <button type="button" class="btn btn-ligth" (click)="borrar(Educacion.id)">
+                            <i class="bi bi-trash-fill"> ELIMINAR </i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
 </div>
